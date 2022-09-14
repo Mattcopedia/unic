@@ -3,7 +3,8 @@ import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';   
 import React from "react";
 import { Link } from 'react-router-dom';
-import styled from "styled-components";  
+import styled from "styled-components"; 
+import unigig from "../assets/img/unigig.jpg" 
 
  //npm install firebase@9.1.3 
 
@@ -11,12 +12,13 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
 
 
     return (
+      <> 
         <nav className=" md:ml-64 py-6 px-3  bg-white"> 
             <div className="container  max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10  bg-white">   
                 <div className="md:hidden">
                     <Button
                         color="transparent"
-                        buttonType="link" 
+                        buttonType="link"  
                         size="lg"
                         iconOnly
                         rounded
@@ -69,8 +71,71 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
               
             </div>
         </nav>
+        <div className='flex  justify-center  flex-row gap-3'>
+
+        <Paragraph>UNIGIG</Paragraph> 
+        <ImageRoot src={unigig}  /> 
+
+        </div>
+
+<br />
+<br />
+
+</> 
     );
 }
+
+const sizes = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
+export const devices = {
+  mobileS: `(min-width: ${sizes.mobileS})`,
+  mobileM: `(min-width: ${sizes.mobileM})`,
+  mobileL: `(max-width: ${sizes.mobileL})`,
+  tablet: `(max-width: ${sizes.tablet})`,
+  laptop: `(min-width: ${sizes.laptop})`,
+  laptopL: `(min-width: ${sizes.laptopL})`,
+  desktop: `(min-width: ${sizes.desktop})`,
+};
+
+
+
+
+const Paragraph = styled.div`
+font-size: 36px;
+font-family: Product Sans Medium;
+line-height: 34.92px;
+color: #2d0353;
+text-align: left;
+padding-top:35px;
+padding-left: 91px; 
+font-weight: bold;
+
+@media ${devices.tablet} { 
+  padding-left: 55px; 
+ 
+} 
+
+
+@media ${devices.mobileL} { 
+  
+  padding-left: 25px;
+  font-size: 26px; 
+} 
+`; 
+
+const ImageRoot = styled.img`
+width: 120px;
+height: px50;
+
+
+`;
 
 const WhiteFlexRow = styled.div`
   // box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.05);

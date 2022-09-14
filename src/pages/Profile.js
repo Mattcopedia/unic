@@ -1,10 +1,18 @@
 import Sidebar from "components/Sidebar";
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components"; 
 import "../components/br.css"  
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+import "./Calendar.css"; 
 
 export default function Dashboard() {
+  const [date, setDate] = useState(new Date());
+
+  const onChange = date => {
+    setDate(date);
+  };
+
     return (
         <>
           
@@ -142,6 +150,13 @@ export default function Dashboard() {
     
     </div>
   <div class="w-full sm:w-1/1 md:w-1/1 lg:w-1/2 xl:w-1/3 mb-4  "> 
+
+  <NewRootRootaw>
+  <div>
+      <Calendar  onChange={onChange} value={date} />
+    </div>
+    </NewRootRootaw>
+
   <NewRootRootaw>
       <WhiteFlexRowaw>
         <FlexColumnaw>

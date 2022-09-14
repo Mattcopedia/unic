@@ -754,6 +754,9 @@ video {
 .gap-0{
 	gap: 0px;
 }
+.gap-3{
+	gap: 0.75rem;
+}
 .overflow-y-auto{
 	overflow-y: auto;
 }
