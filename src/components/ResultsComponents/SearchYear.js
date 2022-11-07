@@ -1,29 +1,27 @@
 import Sidebar from 'components/Sidebar'
 import React from 'react'
 import styled from "styled-components";
-import SearchFeature from './SearchFeature';
 import RegistrationHeader from './RegistrationHeader'
+import YourResult from './YourResult';
+import Layout from 'components/Layout';
 
 
 const SearchYear = () => {
 
-    
-
-
-
-
   return (
     <>
-    <div className='bg-white'>
+
     <div > 
+      <Layout>
         <Sidebar />  
         <RegistrationHeader /> 
-           <SelectAcademicYearRoot>Select academic year </SelectAcademicYearRoot>
-           <SearchFeature />
+           {/* <SelectAcademicYearRoot>Select academic year </SelectAcademicYearRoot> */}
+           <SelectAcademicYearRoot> </SelectAcademicYearRoot>
+           <YourResult />
+           </Layout>
    
       
 
-    </div>
     </div> 
     </> 
   )

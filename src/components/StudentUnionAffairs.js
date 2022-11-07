@@ -6,6 +6,7 @@ import img2 from "../assets/img/image2.PNG";
 import styled from "styled-components"; 
 import './br.css';
 import Sidebar from './Sidebar';
+import Layout from './Layout';
 
 const StudentUnionAffairs = () => {
   return (
@@ -13,6 +14,7 @@ const StudentUnionAffairs = () => {
    
     <> 
      <Sidebar />  
+     <Layout>
 
      <section class=" mb-4 body-font overflow-hidden"> 
   <div class="container ">
@@ -202,7 +204,7 @@ const StudentUnionAffairs = () => {
                     <Text7>studentunionhelp@university.com</Text7>
                     </RootRoot> 
                         </div> 
-
+                        </Layout>
     </> 
   )
 }

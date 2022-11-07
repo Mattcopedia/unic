@@ -2,17 +2,17 @@
 
 import React from 'react';
 import Sidebar from './Sidebar';
-// import coursett from "../assets/img/coursetimetable.PNG";
 import styled from "styled-components";  
 import "./br.css" 
 import { Link } from 'react-router-dom';
+import Layout from './Layout';
  
 
 
 const CourseTimeTables = () => {
   return ( 
     <>
-
+<Layout>
    <Sidebar /> 
 
    <div className='bg-white ml-2 '> 
@@ -130,7 +130,7 @@ const CourseTimeTables = () => {
     
    </div>
     
-           
+   </Layout>
         </> 
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Layout from './Layout';
 
 
 import Maps from './Maps';
@@ -8,10 +9,9 @@ import MapSidebar from './MapSidebar';
 const UniversityMaps = () => {
   return (
     <> 
+    <Layout>
     <MapSidebar /> 
    
-
-  
     <div className='pl-5 pb-7'>
     <UniversityMapRoot>University Map
       
@@ -55,7 +55,7 @@ const UniversityMaps = () => {
     </div>
 
 
- 
+    </Layout>
     </>
   )
 }

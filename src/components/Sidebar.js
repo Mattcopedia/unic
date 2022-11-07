@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';  
 import "./br.css"
+import unigig from "../assets/img/unigig.jpg" 
 
  
  
@@ -16,6 +17,7 @@ export default function Sidebar() {
             <AdminNavbar
                 showSidebar={showSidebar} 
                 setShowSidebar={setShowSidebar}  
+                
             />
             <div
                 className={` fixed   top-0 md:left-0 ${showSidebar} overflow-y-auto flex-row flex-nowrap overflow-hidden  transition-all duration-300 bg-white`} >  
@@ -43,8 +45,9 @@ export default function Sidebar() {
                         </Button> 
                   </div>
                 
-
-                  <Text1>RAKONI   </Text1>
+                <NavLink to="/" >
+                 <ImageRoot src={unigig}  />  
+                 </NavLink> 
 
                      <div className='focus:blue'>
                      <NavLink to="/" exact  >
@@ -71,7 +74,7 @@ export default function Sidebar() {
                   </NavLink>   
 
 
-                  <NavLink to="/result" >
+                  <NavLink to="/search-year" >
                   <FlexRow2 margin={`0px 0px 33px 0px`} onClick={() => setShowSidebar('-left-64')}>
                   <NeonCarrotRectangle margin={`0px 21px 0px 0px`} /> 
                     {/* need to fix this */}
@@ -141,6 +144,12 @@ export default function Sidebar() {
     );
 }
 
+
+const ImageRoot = styled.img`
+width: 120px;
+height: px50;
+padding-bottom:20px;
+`;
 
 
 const NeonCarrotRectangle = styled.div`
@@ -229,15 +238,7 @@ const PlumFlexColumn = styled.div`
   align-items: center;
   padding: 41px 23px 41px 0px;
 `;
-const Text1 = styled.div`
-  font-size: 36px;
-  font-family: Roboto;
-  font-weight: 900;
-  line-height: 54px;
-  color: #ffffff;
-  align-self: flex-end;
-  margin: 0px 24px 49px 0px;
-`;
+
 const Image1 = styled.img`
   width: 16px;
   height: 16px;

@@ -5,11 +5,13 @@ import Sidebar from 'components/Sidebar';
 import styled from "styled-components";
 import CGPAlgorithm from './CGPAlgorithm';
 import CGPACalculatorForm from './CGPACalculatorForm';
+import Layout from 'components/Layout';
 
 
 const CGPACalculator = () => {
   return (
     <>
+    <Layout>
     <Sidebar />
     <div>
     <div>
@@ -45,6 +47,7 @@ const CGPACalculator = () => {
       <CGPACalculatorForm />
       
     </div>
+    </Layout>
     </> 
   )
 }

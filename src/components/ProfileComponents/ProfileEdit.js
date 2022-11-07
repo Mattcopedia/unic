@@ -4,14 +4,16 @@ import styled from "styled-components";
 import "../br.css" 
 import { Link } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
+import Layout from 'components/Layout';
  
 
 const ProfileEdit = () => {
  
     return  ( 
         <>
+        <Layout>
         <Sidebar />
-        <section class=" mb-4 mx-auto body-font overflow-hidden bg-white"> 
+        <section class=" mb-4 mx-auto body-font overflow-hidden "> 
         <div class="container ">
           <div class="flex flex-wrap ">       
               <div class="flex items-center flex-wrap w-full ">
@@ -113,6 +115,7 @@ const ProfileEdit = () => {
        <div> 
        
        </div>
+       </Layout>
         </> 
            
     )

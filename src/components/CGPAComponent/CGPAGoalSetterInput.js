@@ -5,11 +5,13 @@ import Sidebar from 'components/Sidebar';
 import styled from "styled-components";
 import CGPAlgorithm from './CGPAlgorithm';
 import CGPAGoalSetterInputCom from './CGPAGoalSetterInputCom';
+import Layout from 'components/Layout';
 
 
 const CGPAGoalSetterInput = () => {
   return (
     <>
+    <Layout>
     <Sidebar />
     <div>
     <div>
@@ -45,6 +47,7 @@ const CGPAGoalSetterInput = () => {
       <CGPAGoalSetterInputCom />
 
     </div>
+    </Layout>
     </> 
   )
 }

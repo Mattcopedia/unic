@@ -47,6 +47,51 @@ br.responsive {
     background-position: center;
     
   }
+  .loginbtn {
+    border-color: #787878;
+    border-style: solid;
+    width: 367px;
+    background-color: #2d0353;
+    border-radius: 6px;
+    margin: 0px 0px 14px 0px;
+    border-width: 0.5px;
+    color:#ffffff;  
+    margin-top: 10px;
+    padding-top:8.5px;
+    padding-bottom:8.5px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .loginbtn:disabled {
+    background-color: gray;
+  }
+
+  .pos-center {
+    position: fixed;
+    top: calc(50% );
+    left: calc(50% ); 
+  }
+
+  .loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    animation: spin 1s linear infinite;
+    margin: auto !important; 
+    margin-left: 40px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
   .form {
     border-color: #787878;
@@ -94,7 +139,7 @@ br.responsive {
   border-radius: 6px;
   margin: 0px 0px 14px 0px;
   border-width: 0.5px;
-  color:#ffffff; 
+  color:#ffffff;  
   margin-top: 10px;
   }
 
@@ -422,6 +467,11 @@ br.responsive {
             
 
           }
+         
+          .loginbtn {
+            width: 280px;
+          }
+
 
           .form::placeholder {
     

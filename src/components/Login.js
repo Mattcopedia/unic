@@ -1,34 +1,45 @@
 
-import React, {useRef, useEffect, useState } from 'react'
+
+import React, {useRef, useEffect, useState} from 'react'
 import styled from "styled-components";  
 import login from "../assets/img/login.PNG"; 
 import "./br.css" 
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link,useHistory} from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
+import { LoginStudent } from 'redux/actions/apiActions';
+
  
+export var BaseUrl = "https://asi.qlj.mybluehost.me/v2rakonibackend/public" 
 
 const Login = () => {
+ 
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const Error = useSelector((state) => state.AuthLoginStudentError.error)
+
 
   const focusDiv = useRef();
 
-    useEffect(() => {
+    useEffect(() => { 
   if(focusDiv.current) focusDiv.current.focus(); 
  }, [focusDiv]);
-       
-//form validation to disable login button if fields are empty
-    const [emailValue, setEmailValue] = useState('');
-    const [passwordValue, setPasswordValue] = useState('');
 
-    const history = useHistory();
+ const history = useHistory();
 
-    const onLogInClicked = () => {
+
       
-      history.push('/'); 
-  }
+
+const onLogInClicked = () => {
+  dispatch(LoginStudent(email, password,history))
+
+}
 
 
- 
-    return  (
+      
+   
+    return  ( 
         <>
 
             <div class="bg-white">
@@ -37,8 +48,8 @@ const Login = () => {
 
               <img width={1000} src={login} alt="Login" />
                 
-                         
-
+                      
+ 
 
               </div>
               <div class="col-span-12 md:col-span-12 lg:col-span-6 mx-auto"> 
@@ -64,33 +75,40 @@ const Login = () => {
                 <FlexColumn1>
                 <Text3>Log in to your account</Text3>
 
-                <form>           
-                <FlexColumn2 margin={`0px 0px 14px 0px`}>
-                    <Text4>Student Number</Text4>
-                     <input ref={focusDiv} className='form'  value={emailValue}
-                onChange={e => setEmailValue(e.target.value)}
+                <React.Fragment>
+                {Error ? <div style={{color:"red",fontSize:"14px"}}>{Error}</div> : null}
+                </React.Fragment>
+
+
+
+                <FlexColumn2 margin={`0px 0px 14px 0px`}> 
+                    <Text4>Student Email</Text4>
+                     <input ref={focusDiv} className='form'  value={email}
+                onChange={e => setEmail(e.target.value)}
                 type="text" id="Student Number"/>  
                  </FlexColumn2>  
                  
                  <FlexColumn2 margin={`0px 0px 14px 0px`}>
                     <Text4>Password</Text4>
 
-                    <input ref={focusDiv} className='form'  type="Password" id="Password" value={passwordValue}
-                    onChange={e => setPasswordValue(e.target.value)}
+                    <input ref={focusDiv} className='form'  type="Password" id="Password" value={password}
+                    onChange={e => setPassword(e.target.value)}
                 />     
                 </FlexColumn2>
-                <button className='purplebtn'  disabled={!emailValue || !passwordValue}
-                onClick={onLogInClicked} >Login</button> 
-                </form> 
-                </FlexColumn1> 
-
+                <div className='loginbtn' disabled={!email || !password}
+                onClick={onLogInClicked} >Login</div>  
+            
                 
-                <Text1 alignSelf={`inherit`}>Forgot your password ?</Text1> 
+                </FlexColumn1> 
+                     
+            
+                
+                {/* <Text1 alignSelf={`inherit`}>Forgot your password ?</Text1>  */} 
 
                 <div>
             <PoweredByRakoniRoot>Powered by Rakoni</PoweredByRakoniRoot>
              </div>
-            </FlexColumn>
+            </FlexColumn> 
             </div>  
             
            </RootRoot>  
@@ -106,12 +124,13 @@ const Login = () => {
           <br />
           <br />
           <br />
-     
-      
-    
+       
+   
+
         </> 
            
     )
+   
  
 }
 
@@ -133,6 +152,9 @@ export const devices = {
   laptopL: `(min-width: ${sizes.laptopL})`,
   desktop: `(min-width: ${sizes.desktop})`,
 };
+
+
+
 
 
 
@@ -252,8 +274,18 @@ const PoweredByRakoniRoot = styled.div`
   
 `;
 
-
-
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
 
 

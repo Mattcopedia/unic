@@ -4,14 +4,16 @@ import styled from "styled-components";
 import "../br.css" 
 import { Link } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
+import Layout from 'components/Layout';
  
 
 const EditMedia = () => {
  
     return  ( 
         <>
+        <Layout>
         <Sidebar />
-        <section class=" mb-4 mx-auto body-font overflow-hidden bg-white"> 
+        <section class=" mb-4 mx-auto body-font overflow-hidden "> 
         <div class="container ">
           <div class="flex flex-wrap ">       
               <div class="flex items-center flex-wrap w-full ">
@@ -47,37 +49,6 @@ const EditMedia = () => {
             </div>
 
 
-                {/* <div className='mb-'>
-                <GroupRootyw>
-                    
-                    <Lineyw src={`https://file.rendit.io/n/OYu2xn0faX7xcwwhEVap.svg`} />
-                    <Link to="/profile-edit">
-                    <FlexColumnyw left={`34px`}>
-                        <Text1yw>Profile</Text1yw>   
-                        <RoyalPurpleRectangle1yw />   
-                        </FlexColumnyw>
-                        </Link>
-                    
-                    <Link to="/editpassword">
-                    <FlexColumnyw left={`106px`}>
-                        <Text1yw>Password</Text1yw> 
-                        <RoyalPurpleRectangle2yw />
-                                               
-                     </FlexColumnyw>
-                    </Link>
-                     
-
-                  
-                    <Link to="/editmedia">
-                    <FlexColumnyw left={`194px`}>
-                        <Text1yw>Media</Text1yw>
-                        <RoyalPurpleRectangle1 /> 
-                        
-                    </FlexColumnyw>
-                    </Link>
-                    
-                    </GroupRootyw>  
-                </div> */}
                            
 
                 <FlexColumn1>
@@ -138,6 +109,7 @@ const EditMedia = () => {
        <div> 
        
        </div>
+       </Layout>
         </> 
            
     )

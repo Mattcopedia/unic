@@ -4,6 +4,7 @@ import React, { useRef} from 'react'
 import styled from "styled-components";  
 import "../br.css" 
 import Sidebar from 'components/Sidebar';
+import Layout from 'components/Layout';
  
  
 const UploadDoc = () => {
@@ -16,14 +17,9 @@ const UploadDoc = () => {
     }
     return  ( 
         <>
-
-
-
+      <Layout>
         <Sidebar />
-     
-
-
-        <section className=" mb-4 mx-auto body-font overflow-hidden bg-white"> 
+        <section className=" mb-4 mx-auto body-font overflow-hidden"> 
         <div className="container ">
           <div className="flex flex-wrap ">       
               <div className="flex mx-auto items-center flex-wrap w-full ">
@@ -105,6 +101,7 @@ const UploadDoc = () => {
        <div> 
        
        </div>
+       </Layout>
         </> 
            
     )

@@ -7,16 +7,17 @@ import Sidebar from './Sidebar';
 import styled from "styled-components";  
 import "./br.css" 
 import { Link } from 'react-router-dom';
+import Layout from './Layout';
  
 
 
 const Examtimetable = () => {
   return ( 
     <>
-
+  <Layout>
    <Sidebar /> 
 
-   <div className='bg-white ml-2 '> 
+   <div className=' ml-2 '> 
 
    <div>
    <CourseAndExamTimeTableRoot>
@@ -130,7 +131,7 @@ const Examtimetable = () => {
     
    </div>
     
-           
+   </Layout> 
         </> 
   )
 }

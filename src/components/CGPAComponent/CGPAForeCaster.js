@@ -6,11 +6,13 @@ import styled from "styled-components";
 import CGPAlgorithm from './CGPAlgorithm';
 import "../br.css" 
 import GoalForecasterForm from './GoalForecasterForm'; 
+import Layout from 'components/Layout';
 
 
 const CGPAForecaster = () => {
   return (
     <>
+    <Layout>
     <Sidebar />
     <div>
     <div>
@@ -54,6 +56,7 @@ const CGPAForecaster = () => {
       <CGPAlgorithm />
        <GoalForecasterForm />
     </div>
+    </Layout>
     </> 
   )
 }

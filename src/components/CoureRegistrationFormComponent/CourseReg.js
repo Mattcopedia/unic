@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import "../br.css" 
 import styled from "styled-components";
 import RegistrationHeader from 'components/ResultsComponents/RegistrationHeader';
 import {Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { FetchCourseInfo } from 'redux/actions/apiActions';
 
-const sizes = {
+ 
+const sizes = { 
     mobileS: "320px",
     mobileM: "375px",
     mobileL: "425px",
-    tablet: "768px",
+    tablet: "768px", 
     laptop: "1024px",
     laptopL: "1440px",
     desktop: "2560px",
@@ -44,13 +47,20 @@ const ModalBody = styled.div`
         width: 90%;   
       } 
 `
+ 
 
 
 const CourseReg = () => {
-   const [shouldshow, setShouldshow] = useState(false);
+ const [shouldshow, setShouldshow] = useState(false)
+ const CourseInfo = useSelector((state) => state) 
+ const CourseTrue = useSelector((state) => state)
 
+  const dispatch = useDispatch();
 
-
+  
+  useEffect(() => {
+  dispatch(FetchCourseInfo())
+  }, [dispatch])
 
 
   return (
@@ -64,6 +74,7 @@ const CourseReg = () => {
                     <FlexColumn gap={`9px`}>
                     <Text1>Note</Text1>
                     <Paragraph>
+                      
                         The selected courses have been updated <br className="responsivemodal"></br> on your course form. Please check <br className="responsivemodal"></br> critically for course duplication
                     </Paragraph>
                     </FlexColumn>
@@ -81,129 +92,59 @@ const CourseReg = () => {
       )}
 
 
-    <div className='bg-white'>
+    <div className=''>
         <RegistrationHeader />
      
         <br />
         <div className='ml-4'>
+      
         <YourResultRoot>Select Course</YourResultRoot>  
+     
+       
         </div>
-        
+       
 
-         <div style={{overflowX: "auto"}} className='bg-white mx-3 '> 
+        
+         <div style={{overflowX: "auto"}} className='mx-3 bg-white '> 
        
          <table className='Yourcoursereg mx-auto my-6' style={{width:"100%"}} >    
      <tr style={{height:"40px", backgroundColor: "#e5e5e5"}}>
-         <th style={{width:"4%"}}></th> 
-         <th style={{width:"11.8%"}}>Course Code</th>
+        <th style={{width:"5%"}}></th>
+         <th style={{width:"11.8%",paddingLeft:"10px"}}>Course Code</th>
          <th style={{width:"11.8%"}}>Department</th> 
-         <th style={{width:"35%"}}>Course Title</th>
+         <th style={{width:"30%"}}>Course Title</th>
          <th style={{width:"9.3%"}}>Unit</th>
          <th style={{width:"9.3%"}}>Status</th>
          <th style={{width:"9.3%"}}>Semester</th> 
-         <th style={{width:"9.3%"}}>Level</th>    
+         <th  style={{width:"9.3%"}}>Level</th>    
          
-     </tr>    
+     </tr> 
+     {  CourseTrue.SetToTrue.Set ?  CourseInfo.allCourses.courses.data.courses.map((course) => (
+   
+   <tr key={course.id} style={{height:"70px"}}> 
 
-     <tr style={{height:"70px"}}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
+     <td> <input style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
+     </td>    
+       <td style={{paddingLeft:"10px"}}><label for="firstcourse"> <Text3>{course.courseCode}</Text3></label></td>
+       <td ><label for="firstcourse"><Text3>{course.programme}</Text3></label></td>
+       <td><label for="firstcourse"><Text3>{course.courseTitle}</Text3></label></td>
+       <td><label for="firstcourse"><Text3>{course.courseUnit}</Text3></label></td>
+       <td><label for="firstcourse"><Text3>C</Text3></label></td>
+       <td><label for="firstcourse"><Text3>{course.semester}</Text3></label></td>
+       <td><label for="firstcourse"><Text3>{course.level}</Text3></label></td>
+   </tr>
+    ))  : ( <div className="pos-center" >
+        <div className="loader"></div> 
+       </div>
+  ) }  
 
-     <tr className='bg-gray-100' style={{height:"70px"}}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
-
-     <tr style={{height:"70px" }}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
-
-     <tr className='bg-gray-100' style={{height:"70px" }}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
-
-     <tr style={{height:"70px"}}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
-
-     <tr className='bg-gray-100' style={{height:"70px" }}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>
-     </tr>
-
-     <tr style={{height:"70px"}}> 
-         <td > <input  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse"  />
-         </td> 
-         <td><label for="firstcourse"> <Text3>STA 101</Text3></label></td>
-         <td ><label for="firstcourse"><Text3>Statistics</Text3></label></td>
-         <td><label for="firstcourse"><Text3>Introduction to Statistics and Maths</Text3></label></td>
-         <td><label for="firstcourse"><Text3>4</Text3></label></td>
-         <td><label for="firstcourse"><Text3>C</Text3></label></td>
-         <td><label for="firstcourse"><Text3>First</Text3></label></td>
-         <td><label for="firstcourse"><Text3>100</Text3></label></td>  
-     </tr>
-
-     <tr style={{height:"70px"}}> 
-         <td colspan="2"> <td><label for="firstcourse"> <Text4>Total Unit</Text4></label></td>
-         </td> 
-         <td ><label for="firstcourse"></label></td>
-         <td><label for="firstcourse"></label></td>
-         <td><label for="firstcourse"><Text4>16</Text4></label></td>
-         <td><label for="firstcourse"></label></td>
-         <td><label for="firstcourse"></label></td>
-         <td><label for="firstcourse"></label></td>  
-     </tr>
+  
 
         </table>
       
  
 </div>
+                
      
      <br />
      <div class='justify'> 
@@ -348,16 +289,12 @@ const Text3 = styled.div`
  
 `;
 
-const Text4 = styled.div`
-mix-blend-mode: normal;
-font-size: 18px;
-font-family: Product Sans Medium;
-line-height: 17.46px;
-color: #219653;
- 
-`;
+
 
 
 
 
 export default CourseReg; 
+
+
+

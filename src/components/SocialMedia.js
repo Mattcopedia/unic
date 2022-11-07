@@ -2,6 +2,7 @@ import React from 'react'
 import img3 from "../assets/img/socialMedia.PNG";  
 import styled from "styled-components"; 
 import Sidebar from "./Sidebar";
+import Layout from './Layout';
 
 
 const SocialMedia = () => {
@@ -9,6 +10,7 @@ const SocialMedia = () => {
   return (
 
     <> 
+    <Layout>
     <Sidebar />
     <div>
            <section class=" mb-4 body-font overflow-hidden"> 
@@ -263,7 +265,7 @@ const SocialMedia = () => {
                          </div>  
 
     </div>
-      
+    </Layout>
        
         </> 
          

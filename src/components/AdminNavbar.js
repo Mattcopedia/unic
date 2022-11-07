@@ -1,20 +1,36 @@
 
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';   
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components"; 
-import unigig from "../assets/img/unigig.jpg" 
 
- //npm install firebase@9.1.3 
+import { useHistory } from 'react-router-dom';
+
 
 export default function AdminNavbar({ showSidebar, setShowSidebar }) {
+      // eslint-disable-next-line 
+
+  const [data, setData] = useState([]);
+  const history = useHistory();
+   
+  const logOut = () => { 
+    localStorage.removeItem('customtoken'); 
+    history.push('/login');  
+}
 
 
+  useEffect(() => {
+    const dataname = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+     setData(dataname);
+    }
+     // eslint-disable-next-line 
+  }, []);
     return (
       <> 
-        <nav className=" md:ml-64 py-6 px-3  bg-white"> 
-            <div className="container  max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10  bg-white">   
+        <nav className=" md:ml-64 py-6 px-3"> 
+            <div className="container  max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10  ">   
                 <div className="md:hidden">
                     <Button
                         color="transparent"
@@ -64,17 +80,17 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
             <Image15
               src={`https://file.rendit.io/n/9H9ckLV3IMzBA6LkmH5S.svg`}
             />
-            <Text10 color={`#505050`}>Logout</Text10>
+            <Text10 className="cursor-pointer" onClick={logOut} color={`#505050`}>Logout</Text10>
           </FlexRow7>
         </WhiteFlexRow>
       
               
             </div>
         </nav>
-        <div className='flex  justify-center  flex-row gap-3'>
+        <div className='flex  justify-center '>
 
-        <Paragraph>UNIGIG</Paragraph> 
-        <ImageRoot src={unigig}  /> 
+        <Paragraph>{data.school}</Paragraph> 
+     
 
         </div>
 
@@ -112,13 +128,12 @@ font-size: 36px;
 font-family: Product Sans Medium;
 line-height: 34.92px;
 color: #2d0353;
-text-align: left;
-padding-top:35px;
-padding-left: 91px; 
+text-align: center;
+padding-top:10px;; 
 font-weight: bold;
 
 @media ${devices.tablet} { 
-  padding-left: 55px; 
+
  
 } 
 
@@ -130,18 +145,12 @@ font-weight: bold;
 } 
 `; 
 
-const ImageRoot = styled.img`
-width: 120px;
-height: px50;
 
-
-`;
 
 const WhiteFlexRow = styled.div`
   // box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.05);
   
   width: 1079px;
-  background-color: #ffffff;
   display: flex;
   align-self: center;
   flex-direction: row;

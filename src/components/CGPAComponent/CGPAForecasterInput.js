@@ -6,11 +6,13 @@ import styled from "styled-components";
 import CGPAlgorithm from './CGPAlgorithm';
 import "../br.css" 
 import CGPAForecasterInputCom from './CGPAForecasterInputCom';
+import Layout from 'components/Layout';
 
 
 const CGPAForecasterInput = () => {
   return ( 
     <>
+    <Layout>
     <Sidebar />
     <div>
     <div>
@@ -54,6 +56,7 @@ const CGPAForecasterInput = () => {
       <CGPAlgorithm />
        <CGPAForecasterInputCom />
     </div>
+    </Layout>
     </> 
   )
 }

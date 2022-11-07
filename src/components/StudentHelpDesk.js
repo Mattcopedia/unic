@@ -4,6 +4,7 @@ import "./br.css"
 
 import ticket from "../assets/img/submit a ticket.PNG";
 import Sidebar from "./Sidebar";
+import Layout from "./Layout";
 
 
 
@@ -19,6 +20,7 @@ export default function StudentHelpDesk() {
 
   return (
     <>
+    <Layout>
     <Sidebar />
     <div className="grid grid-cols-5 py-4 mb-16 mx-4 resultcolor bg-gray-100 ">
        <div className=" col-span-4"> 
@@ -183,6 +185,7 @@ export default function StudentHelpDesk() {
        </div>  
      
     </div> 
+    </Layout>
     </>
   );
 }

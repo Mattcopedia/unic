@@ -1,12 +1,27 @@
 import Sidebar from "components/Sidebar";
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components"; 
 import "../components/br.css"  
 import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import "./Calendar.css"; 
+import Layout from "components/Layout";
 
-export default function Dashboard() {
+
+export default function Dashboard() { 
+  const [data, setData] = useState([]);
+
+  
+
+  useEffect(() => {
+    const dataname = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+     setData(dataname);
+    }
+    // eslint-disable-next-line
+  }, []);
+ 
+  
   const [date, setDate] = useState(new Date());
 
   const onChange = date => {
@@ -15,9 +30,9 @@ export default function Dashboard() {
 
     return (
         <>
-          
+        <Layout>
+          <div className=" ">
          <Sidebar /> 
- 
          <div>
            
          <div className="mx-7 my-4 ">
@@ -29,7 +44,7 @@ export default function Dashboard() {
                            <NeonCarrotFlexRow>
                     <FlexColumn width={`148px`}>
                         <Text1>Total course taken</Text1>
-                        <Text2>40</Text2>
+                        <Text2>{data.totalCourseTaken}</Text2>
                         </FlexColumn>
                         <Image1 src={`https://file.rendit.io/n/9Vr3KV0eOirqoe47C5Ev.svg`} />
                     </NeonCarrotFlexRow>
@@ -43,7 +58,7 @@ export default function Dashboard() {
                            <NeonCarrotFlexRow>
                     <FlexColumn width={`148px`}>
                         <Text1>Ongoing course</Text1>
-                        <Text2>10</Text2>
+                        <Text2>{data.totalGradedCourses}</Text2>
                         </FlexColumn>
                         <Image1 src={`https://file.rendit.io/n/9Vr3KV0eOirqoe47C5Ev.svg`} />
                     </NeonCarrotFlexRow>
@@ -60,7 +75,7 @@ export default function Dashboard() {
                            <NeonCarrotFlexRow>
                     <FlexColumn width={`148px`}>
                         <Text1>Total semester unit</Text1>
-                        <Text2>22</Text2>
+                        <Text2>{data.totalSemesterUnit} </Text2>
                         </FlexColumn>
                         <Image1 src={`https://file.rendit.io/n/kYmx87PyQZ8Krv45vTCp.svg`} />
                     </NeonCarrotFlexRow>
@@ -77,7 +92,7 @@ export default function Dashboard() {
                            <NeonCarrotFlexRow>
                     <FlexColumn width={`148px`}>
                         <Text1>Total outstanding</Text1>
-                        <Text2>2</Text2>
+                        <Text2>{data.totalOutstanding}</Text2>
                         </FlexColumn>
                         <Image1 src={`https://file.rendit.io/n/Fwb5YADEIAmUKf5EqQd2.svg`} />
                     </NeonCarrotFlexRow>
@@ -94,13 +109,21 @@ export default function Dashboard() {
                     <Ellipseyw src={`https://file.rendit.io/n/tsYpb8jtUOnBDZAMizwM.png`} />
                     <FlexColumnyw>
                       <Text1yw>Department</Text1yw>
-                      <Text2yw>Statistics</Text2yw>
+                      <Text2yw>{data.programme}</Text2yw>
                     </FlexColumnyw>
-                    <FlexColumn1yw> 
-                      <Text3yw>Matric No:</Text3yw>
-                      <Text4yw>STA/19/7009</Text4yw>
-        
-      </FlexColumn1yw>
+
+                    <FlexColumnyw>
+                      <Text1yw>Matric No:</Text1yw>
+                      <Text2yw>{data.userId}</Text2yw>
+                    </FlexColumnyw>
+
+                    <FlexColumn1yw>
+                      <Text3yw></Text3yw>
+                      <Text4yw></Text4yw>
+                    </FlexColumn1yw>
+
+
+                    
       <div className="bg-gray-100"> 
       <Link to="/profile-edit">
       <button className="editprofile"> Edit Profile</button> 
@@ -117,30 +140,30 @@ export default function Dashboard() {
       <FlexColumnzw>
         <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text1zw margin={`0`}>First name</Text1zw>
-          <Text2zw alignSelf={`inherit`}>Ayomide Joy</Text2zw>
+          <Text2zw alignSelf={`inherit`}>{data.firstName}</Text2zw>
         </FlexColumn1zw>
         <FlexColumn1zw margin={`0`}>
           <Text1zw margin={`0px 0px 0px 1px`}>Last name</Text1zw>
-          <Text2zw alignSelf={`inherit`}>Akinyemi</Text2zw>
+          <Text2zw alignSelf={`inherit`}>{data.lastName}</Text2zw>
         </FlexColumn1zw>
         <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text1zw margin={`0`}>Email</Text1zw>
-          <Text2zw alignSelf={`inherit`}>Akinzzz@universitystudent.com</Text2zw>
+          <Text2zw alignSelf={`inherit`}>{data.email}</Text2zw>
         </FlexColumn1zw>
         <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text1zw margin={`0`}>Phone number</Text1zw>
-          <Text2zw alignSelf={`inherit`}>08064540969</Text2zw>
+          <Text2zw alignSelf={`inherit`}>{data.phone}</Text2zw>
         </FlexColumn1zw>
         <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text9zw>Parent Phone number</Text9zw>
-          <Text2zw alignSelf={`flex-start`}>08064540969</Text2zw>
+          <Text2zw alignSelf={`flex-start`}>{data.phone}</Text2zw>
         </FlexColumn1zw>
-        <FlexColumn6zw>
+
+        <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text1zw margin={`0`}>Address</Text1zw>
-          <Text2zw alignSelf={`inherit`}>
-            B2-33, Block 66 omole estate iyanan ipaja, Lagos
-          </Text2zw>
-        </FlexColumn6zw>
+          <Text2zw alignSelf={`inherit`}>{data.address}</Text2zw>
+        </FlexColumn1zw>
+
         <FlexColumn1zw margin={`0px 0px 0px 1px`}>
           <Text1zw margin={`0`}>Religion</Text1zw>
           <Text2zw alignSelf={`inherit`}>Christianity</Text2zw>
@@ -162,14 +185,14 @@ export default function Dashboard() {
         <FlexColumnaw>
           <Text1aw>Current CGPA</Text1aw>
           <Element3aw>
-            <Text2aw>Good standing</Text2aw>
+            <Text2aw>{data.remark}</Text2aw>
             <Text3aw>Remark</Text3aw>
           </Element3aw>
         </FlexColumnaw>
         <Element4aw>
           <Ellipseaw src={`https://file.rendit.io/n/uYk4IVrP6yzejXqIzE2d.svg`} />
           <Ellipse1aw>
-            <Text4aw>4.29</Text4aw>
+            <Text4aw>{data.cgpa}</Text4aw>
             <Element2aw>86% </Element2aw>
           </Ellipse1aw>
         </Element4aw>
@@ -191,6 +214,9 @@ export default function Dashboard() {
 </div> */}
                         
          </div>
+
+         </div>
+         </Layout> 
         </>
     ); 
 }
@@ -214,7 +240,7 @@ const sizes = {
     laptopL: `(min-width: ${sizes.laptopL})`,
     desktop: `(min-width: ${sizes.desktop})`,
   };
-
+ 
 
 const FlexColumn = styled.div`
   align-self: stretch;
@@ -277,6 +303,7 @@ const WhiteFlexColumnRootyw = styled.div`
   margin-left: 10px; 
   margin-bottom: 10px; 
   margin-top: 1px;
+  
 `;
 const Ellipseyw = styled.img`
   max-width: 141px;
@@ -390,13 +417,6 @@ const Text9zw = styled.div`
   font-family: Roboto;
   line-height: 18px;
   color: #b3b1b1;
-`;
-const FlexColumn6zw = styled.div`
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 

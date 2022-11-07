@@ -1,48 +1,53 @@
 
-       import React from "react"; 
+       import React, {useEffect, useState} from "react"; 
        import { NavLink } from 'react-router-dom';
        import styled from "styled-components";
        import Sidebar from "components/Sidebar";
-      //  import welcomeone from "../assets/img/welcome.PNG"; 
-      //  import welcometwo from "../assets/img/secondwelcome.PNG";
-      import "../components/br.css"
+       import Layout from "components/Layout";
+  
 
-   
+ const HomePage = () => { 
+  const [data, setData] = useState([]);
 
-       
+  
 
-export default function Dashboard() {  
-       
-   
+  useEffect(() => {
+    const dataname = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+     setData(dataname);
+    }
+    // eslint-disable-next-line
+  }, []); 
+  
+  
 
-    return (   
+    return (
         <>
+        <Layout>
         <Sidebar />  
-
-        <div className="bg-white py-5">  
+      
+        <div className="py-5">   
 
         <div class="max-w-7xl ml-7 heropattern py-11 px-3 mr-7  grid grid-cols-12 ">
               <div class="col-span-12 mt-0.4   md:col-span-12 object-fill lg:col-span-6">
-
-              {/* <img width={700} src={welcomeone} alt="welcome" /> */}
-                
-              <FlexColumn>
-                <FlexRow>
-                  <Text10>Welcome Back</Text10>
-                  <Text20>🚀</Text20>
-                </FlexRow>
-                <Text30>Ayomide <br className="responsivemodal"></br> Akinyemi</Text30>
-              </FlexColumn>  
-
+              
+                 <FlexColumn >
+                 <FlexRow> 
+                   <Text10>Welcome Back</Text10>
+                   <Text20>🚀</Text20> 
+                 </FlexRow>
+                 <Text30> {data.firstName} <br className="responsivemodal"></br>{data.lastName}</Text30>
+               </FlexColumn>  
+   
 
               </div>
 
               <div class="col-span-12 pb-0.5   md:col-span-12 object-fill lg:col-span-6 "> 
-              {/* <img width={500} src={welcometwo} alt="welcome" /> */}
+           
 
-              <Paragraph>
+              <Paragraph> 
             Develop a passion for learning. If you do, you will never cease to grow.
-            – <Text40>Anthony J. D’Angelo</Text40>  
+            – <Text40>Anthony J. D’Angelo </Text40>  
           </Paragraph>
 
               </div>
@@ -196,6 +201,7 @@ export default function Dashboard() {
 
                          </div>
                          </div> 
+                         </Layout>
                   
         </>
     );
@@ -339,3 +345,5 @@ const Text40 = styled.div`
   color: #f2994a;
   display: contents;
 `;
+
+export default HomePage; 
