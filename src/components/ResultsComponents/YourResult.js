@@ -70,7 +70,7 @@ const YourResult = () => {
 
 
 
-     {  resCourse  ? responseresult.data.courses.map((course) => {
+     {  resCourse && data  ? responseresult.data.courses.map((course) => {
         return (
      <tr key={course.id} style={{height:"70px"}}> 
         

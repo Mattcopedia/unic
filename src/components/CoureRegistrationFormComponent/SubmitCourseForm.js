@@ -196,7 +196,7 @@ const courseInfo = datanamecourse
    
 
 
-{  resCourseTaken ?  responseresultTaken.data.courses.map((course) => (
+{  resCourseTaken && data ?  responseresultTaken.data.courses.map((course) => (
    
    <tr key={course.id} style={{height:"70px"}}>  
     <td> <input onClick={handleIsClosed}  style={{marginLeft:"15px"}} type="checkbox" id="firstcourse" name="firstcourse" checked={isClosed}  />

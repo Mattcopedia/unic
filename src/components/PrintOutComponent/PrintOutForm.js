@@ -177,7 +177,7 @@ const PrintOutForm = () => {
            
          
      </tr> 
-     {  resCourseTaken ?  responseresultTaken.data.courses.map((course) => (
+     {  resCourseTaken  && data ?  responseresultTaken.data.courses.map((course) => (
 
      <tr key={course.id} style={{height:"70px"}}>  
          <td ><label style={{ paddingLeft: "10px"}}  className="tabelinput" for="firstcourse">{course.id}</label></td> 
